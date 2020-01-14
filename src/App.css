@@ -1,3 +1,12 @@
 .App {
-  background: #ffff00;
+  background: linear-gradient(to bottom, #abcdef, #096);
+  display: flex;
+  flex-wrap: wrap;
+}
+.App p:nth-child(2) {
+  flex-grow: 1;
+  background: yellowgreen;
+}
+.App p {
+  flex-basis: 200px;
 }
