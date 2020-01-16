@@ -33,3 +33,49 @@
 
 要想解析`promise、proxy、generator、map、set`
 需要增加`@babel/polyfill`
+
+**使用:@babel/preset-react 将对应的 jsx 语法转换成 js**
+
+#### resolve
+
+可以设置模块应该怎么解析
+常用项：
+
+- alias 别名
+
+#### devServer 属性
+
+通过来自 webpack-dev-server 的这些选项，来配置 webpack-dev-server 的行为
+
+--------------至此最基本的一个 webpack--------------------
+
+### 分成开发环境和生产环境
+
+开发环境需要的是：
+热更新，不用压缩代码，完整的 sourceMap:便于定位错误
+
+生产环境
+压缩 js 代码，压缩 css 代码，合理的 sourceMap,分割代码
+
+用到的工具：
+
+- `webpack-merge` 用来合并配置
+- `copy-webpack-plugin` 用来复制静态文件
+- `optimize-css-assets-webpack-plugin` 用来压缩 css
+- `uglify-webpack-plugin` 用来压缩 js
+
+---
+
+当前代码打包时间： 18221ms
+打包完的文件：css:402 bytes js:320kib
+
+打包优化：
+
+1. 减少文件的搜索范围
+
+- alias 别名的配置：当代码中出现`import "react"`的时候，webpack 会采用向上递归的方式去`node_modules`文件中找（其他的文件有其他文件的查找初始目录）。为了减少搜索范围我们可以直接告诉 webpack 去哪个路径下去查找。也就是别名的配置
+- `include,exclude`的配置也可以减少一些没必要查询的文件的寻找，比如图片，js，css，音频文件之类的，可以指定文件目录去操作
+- extensions webpack 会根据 extensions 设置的优先级去匹配文件，最好是把使用频率高的文件格式放在前面
+
+2. happyPack 使用 HappyPack 开启多进程 Loader 转换
+   > 在 webpack 构建的过程中，实际上耗费的时间大多数用在了 loader 解析转换和代码的压缩中,日常开发中，需要对 js,css,图片等资源进行转换，而且转换的过程中的数据量大。但是由于 js 是单线程的，并不能同时对多种资源进行转换
