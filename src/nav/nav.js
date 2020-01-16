@@ -6,7 +6,7 @@ class Nav extends React.Component {
       b: 1
     }
     const c = _.cloneDeep(a)
-    console.log(c, '我想')
+    console.log(c, '我想123')
   }
   render() {
     return <div>我是nav</div>
