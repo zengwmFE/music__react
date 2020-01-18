@@ -63,6 +63,12 @@
 - `copy-webpack-plugin` 用来复制静态文件
 - `optimize-css-assets-webpack-plugin` 用来压缩 css
 - `uglify-webpack-plugin` 用来压缩 js
+- `optimization.splitChunks` 代替 4.x 之前的`CommonsChunkPlugin`用来建立一个独立文件的功能
+  webpack 将会根据以下条件自动分割快
+- 可以共享新块，或者模块来自`node_modules`文件
+- 新的块将大于 30kb
+- 按需加载块时，并行请求的最大数量将小于或等于 5
+- 初始页面加载时并行请求的最大数量将小于或等于 3
 
 ---
 
@@ -78,4 +84,7 @@
 - extensions webpack 会根据 extensions 设置的优先级去匹配文件，最好是把使用频率高的文件格式放在前面
 
 2. happyPack 使用 HappyPack 开启多进程 Loader 转换
+
    > 在 webpack 构建的过程中，实际上耗费的时间大多数用在了 loader 解析转换和代码的压缩中,日常开发中，需要对 js,css,图片等资源进行转换，而且转换的过程中的数据量大。但是由于 js 是单线程的，并不能同时对多种资源进行转换
+
+3. ParallelUglifyPlugin 对 js/es 进行深度压缩
