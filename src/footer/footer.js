@@ -8,7 +8,7 @@ function Footer(props) {
     setCount(count + 'I`am a really footer=>嘟嘟嘟嘟')
   }
   useEffect(() => {
-    console.log(123)
+    document.title = `You clicked ${count} times`
   })
   return <div onClick={setPreCount.bind(this)}>{count}</div>
 }
