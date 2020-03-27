@@ -1,0 +1,14 @@
+.App {
+  background: linear-gradient(to bottom, #abcdef, #096);
+  flex-wrap: wrap;
+}
+.App p:nth-child(2) {
+  flex-grow: 1;
+  background: yellowgreen;
+}
+.App p {
+  flex-basis: 200px;
+}
+.App .table__tr {
+  width: 100px;
+}
