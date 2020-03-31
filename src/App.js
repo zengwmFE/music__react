@@ -4,8 +4,6 @@ import 'antd/dist/antd.css'
 import React from 'react'
 import './App.scss'
 import './fix.scss'
-import FragmentComponent from './Fragments'
-import LitterFooter from './littleFooter'
 import Nav from './nav/nav'
 export const { Provider, Consumer } = React.createContext('light')
 class App extends React.Component {
@@ -98,11 +96,6 @@ class App extends React.Component {
           <img src={testImg} alt="测试" onClick={this.clkInput.bind(this)} />
           <Nav />
         </div>
-        <Provider value={this.state.a}>
-          <LitterFooter inputValue={this.state.inputValue}>
-            This is valid HTML &amp; JSX at the same time.
-          </LitterFooter>
-        </Provider>
         <div>
           <Input
             placeholder="Basic usage"
@@ -130,18 +123,6 @@ class App extends React.Component {
             dataSource={this.state.dataSource}
             columns={this.state.columns}
           />
-          <table border="1">
-            <thead>
-              <tr className="table__tr">
-                <FragmentComponent />
-              </tr>
-            </thead>
-            <tbody>
-              <tr className="table__tr">
-                <FragmentComponent />
-              </tr>
-            </tbody>
-          </table>
         </div>
       </div>
     )
