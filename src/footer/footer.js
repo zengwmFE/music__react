@@ -1,8 +1,11 @@
 import { Input } from 'antd'
-import React, { Profiler, useState } from 'react'
+import React, { Profiler, useEffect, useState } from 'react'
+import { useHistory, useLocation } from 'react-router'
 import LitterFooter from '../littleFooter'
 function Footer(props) {
   const [inputValue, setInputValue] = useState('I `am a footer')
+  const history = useHistory()
+  const location = useLocation()
   // setCount('I`am a footer')
   function setPreCount() {
     console.log(props.a)
@@ -20,15 +23,26 @@ function Footer(props) {
   function onChange(ev) {
     setInputValue(ev.target.value)
   }
+  function emojClick() {
+    history.push('/?name=111')
+  }
+  useEffect(() => {
+    document.title = '当前页面是：' + location.pathname
+    return () => {
+      console.log('我只是个unMounted')
+    }
+  })
   return (
     <div>
       {props.children}
-      <div> {'😊😂🤣❤😍'}</div>
+      <div onClick={emojClick.bind(this)}> {'😊😂🤣❤😍我们要去首页啊~~~~'}</div>
       <Input
         placeholder="Basic usage"
         value={inputValue}
         onChange={onChange.bind(this)}
       />
+
+      <div>我们现在的页面是什么？</div>
       <Profiler id="PreviewPane" onRender={callback}>
         <LitterFooter />
       </Profiler>

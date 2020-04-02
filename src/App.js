@@ -2,6 +2,7 @@ import testImg from '@/assets/img/fix.png'
 import { Button, Input, Table } from 'antd'
 import 'antd/dist/antd.css'
 import React from 'react'
+import { Link } from 'react-router-dom'
 import './App.scss'
 import './fix.scss'
 import Nav from './nav/nav'
@@ -71,17 +72,7 @@ class App extends React.Component {
     this.setState({ inputValue: ev.target.value })
   }
   clkInput() {
-    var inputValue = this.state.inputValue
-    this.setState({
-      inputValue: ++inputValue
-    })
-    this.setState({
-      inputValue: ++inputValue
-    })
-
-    this.setState({
-      inputValue: ++inputValue
-    })
+    this.props.history.replace('/footer')
   }
   render() {
     const { loading, selectedRowKeys } = this.state
@@ -123,6 +114,7 @@ class App extends React.Component {
             dataSource={this.state.dataSource}
             columns={this.state.columns}
           />
+          <Link to="/footer">FAQs</Link>
         </div>
       </div>
     )

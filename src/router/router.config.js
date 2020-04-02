@@ -1,6 +1,8 @@
 import React from 'react'
 import {
   HashRouter,
+  BrowserRouter,
+  MemoryRouter,
   Redirect,
   Route as ReactRoute,
   Switch
@@ -15,7 +17,7 @@ const router = () => (
       <ReactRoute path="/footer" component={footer} />
       <ReactRoute path="/fragment" component={FragmentsIndex} />
       <ReactRoute path="/" component={App} exact />
-      <ReactRoute path="/404" component={NotFind}></ReactRoute>
+      <ReactRoute path="*" component={NotFind}></ReactRoute>
     </Switch>
   </HashRouter>
 )
