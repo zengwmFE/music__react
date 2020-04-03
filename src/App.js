@@ -72,7 +72,7 @@ class App extends React.Component {
     this.setState({ inputValue: ev.target.value })
   }
   clkInput() {
-    this.props.history.replace('/footer')
+    this.props.history.replace('/fragment')
   }
   render() {
     const { loading, selectedRowKeys } = this.state

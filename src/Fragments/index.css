@@ -1,0 +1,28 @@
+.frage__timeline {
+  margin-top: 100px;
+}
+.frage__timeline li {
+  list-style: none;
+}
+.frage__timeline li div {
+  border-left: 1px solid red;
+  width: 100%;
+  height: 50px;
+  padding-left: 50px;
+  position: relative;
+  top: -25px;
+}
+.frage__timeline li div p {
+  position: absolute;
+  top: -25px;
+}
+.frage__timeline li div::before {
+  display: inline-block;
+  content: "";
+  width: 10px;
+  height: 10px;
+  background: red;
+  position: absolute;
+  left: -5px;
+  border-radius: 50%;
+}
