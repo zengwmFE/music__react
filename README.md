@@ -88,3 +88,27 @@
    > 在 webpack 构建的过程中，实际上耗费的时间大多数用在了 loader 解析转换和代码的压缩中,日常开发中，需要对 js,css,图片等资源进行转换，而且转换的过程中的数据量大。但是由于 js 是单线程的，并不能同时对多种资源进行转换
 
 3. ParallelUglifyPlugin 对 js/es 进行深度压缩
+
+## redux
+
+### 三大原则
+
+#### 单一数据源
+
+整个应用得`state`被存储在一颗`object tree`,并且这个`object tree`只存在于唯一一个`store`中
+
+#### state 是只读得
+
+唯一改变`state`得方法就是触发`action`，`action`是一个用于描述已发生事件得普通对象
+
+#### 使用纯函数来执行修改
+
+为了描述`action`如何改变`state tree`，需要去编写一个 `Reducer`
+
+`reducers`只是一些纯函数，接收先前得`state`和`action`,并返回新的`state`
+
+可以根据应用得增大，来拆分`reducers`,然后通过`combineReducers`
+
+### 与 Flux 得比较
+
+相同点：`Flex`和`redux`
